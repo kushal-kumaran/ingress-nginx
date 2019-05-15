@@ -221,6 +221,9 @@ get_src 15bd1005228cf2c869a6f09e8c41a6aaa6846e4936c473106786ae8ac860fab7 \
 get_src 5f629a50ba22347c441421091da70fdc2ac14586619934534e5a0f8a1390a950 \
         "https://github.com/yaoweibin/nginx_ajp_module/archive/$NGINX_AJP_VERSION.tar.gz"
 
+get_src 60f2663aeea90e7950e9f2785561557ab76e94795b739113b59210605d0d9d49 \
+        "https://github.com/ledgetech/lua-resty-http/archive/v0.13.tar.gz"
+
 # improve compilation times
 CORES=$(($(grep -c ^processor /proc/cpuinfo) - 0))
 
@@ -278,6 +281,9 @@ make all
 make install
 
 cd "$BUILD_PATH/lua-resty-cookie-0.1.0"
+make install
+
+cd "$BUILD_PATH/lua-resty-http-0.13"
 make install
 
 # build and install lua-resty-waf with dependencies
