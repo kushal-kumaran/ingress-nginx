@@ -224,6 +224,9 @@ get_src 5f629a50ba22347c441421091da70fdc2ac14586619934534e5a0f8a1390a950 \
 get_src 60f2663aeea90e7950e9f2785561557ab76e94795b739113b59210605d0d9d49 \
         "https://github.com/ledgetech/lua-resty-http/archive/v0.13.tar.gz"
 
+get_src 97f27974154d4e04c27342bb7a192f38e64bdbfc0b6085dab41c185ea8e54970 \
+        "https://github.com/3scale/lua-resty-url/archive/v0.3.4.tar.gz"
+
 # improve compilation times
 CORES=$(($(grep -c ^processor /proc/cpuinfo) - 0))
 
@@ -285,6 +288,9 @@ make install
 
 cd "$BUILD_PATH/lua-resty-http-0.13"
 make install
+
+cd "$BUILD_PATH/lua-resty-url-0.3.4"
+install src/resty/*.lua /usr/local/lib/lua/resty
 
 # build and install lua-resty-waf with dependencies
 /install_lua_resty_waf.sh
