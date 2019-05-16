@@ -862,6 +862,7 @@ stream {
         ssl_client_certificate                  {{ $server.CertificateAuth.CAFileName }};
         ssl_verify_client                       {{ $server.CertificateAuth.VerifyClient }};
         ssl_verify_depth                        {{ $server.CertificateAuth.ValidationDepth }};
+        set $ssl_client_certificate             "{{ $server.CertificateAuth.CAFileName }}";
         {{ if not (empty $server.CertificateAuth.ErrorPage)}}
         error_page 495 496 = {{ $server.CertificateAuth.ErrorPage }};
         {{ end }}
